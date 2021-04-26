@@ -1,4 +1,4 @@
-package com.exampletictactoe.service;
+package com.example.tictactoe.service;
 
 import com.example.tictactoe.exception.ErrorType;
 import com.example.tictactoe.exception.TicTacToeServiceException;
@@ -7,11 +7,13 @@ import com.example.tictactoe.service.TicTacToeService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class TicTacToeServiceTest {
 
+    @Autowired
     TicTacToeService ticTacToeService;
 
     @Test
