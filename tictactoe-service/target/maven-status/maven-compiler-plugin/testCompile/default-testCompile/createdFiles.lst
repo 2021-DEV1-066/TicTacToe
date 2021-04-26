@@ -1,2 +1,2 @@
-com\exampletictactoe\service\SpringBootTestApplication.class
-com\exampletictactoe\service\TicTacToeServiceTest.class
+com\example\tictactoe\service\TicTacToeServiceTest.class
+com\example\tictactoe\service\SpringBootTestApplication.class
