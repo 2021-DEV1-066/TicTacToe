@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/tictactoe-app/src/main/main.iml" filepath="$PROJECT_DIR$/tictactoe-app/src/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tic-tac-toe-parent.iml" filepath="$PROJECT_DIR$/tic-tac-toe-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tictactoe-app/tic-tac-toe.app.iml" filepath="$PROJECT_DIR$/tictactoe-app/tic-tac-toe.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tictactoe-rest/tic-tac-toe.rest.iml" filepath="$PROJECT_DIR$/tictactoe-rest/tic-tac-toe.rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tictactoe-service/tic-tac-toe.service.iml" filepath="$PROJECT_DIR$/tictactoe-service/tic-tac-toe.service.iml" />
+    </modules>
+  </component>
+</project>

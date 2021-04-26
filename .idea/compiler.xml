@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="tic-tac-toe.rest" />
+        <module name="tic-tac-toe.app" />
+        <module name="tic-tac-toe.service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="tic-tac-toe-parent" target="11" />
+      <module name="tic-tac-toe.app" target="11" />
+      <module name="tic-tac-toe.rest" target="11" />
+      <module name="tic-tac-toe.service" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="-Duser.language=en" />
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="tic-tac-toe.app" options="-parameters" />
+      <module name="tic-tac-toe.rest" options="-parameters" />
+      <module name="tic-tac-toe.service" options="-parameters" />
+    </option>
+  </component>
+</project>
