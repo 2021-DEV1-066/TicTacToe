@@ -16,13 +16,8 @@ import javax.annotation.PostConstruct;
 public class TicTacToeService {
 
     private static Logger logger = LoggerFactory.getLogger(TicTacToeService.class);
-
-    private static int[][] board;
-
-    private TicTacToeElement lastElementPlayed;
-    private int moveCount=0;
-
     private BoardProperties boardProperties;
+    private GameState gameState;
 
     public TicTacToeService(BoardProperties boardProperties) {
         this.boardProperties = boardProperties;
@@ -30,23 +25,21 @@ public class TicTacToeService {
     }
 
     public void initBoard(int size) {
-        board = new int[size][size];
-        lastElementPlayed = null;
-        moveCount = 0;
+        gameState = new GameState(size);
     }
 
     public void addElement(TicTacToeElement element, int x, int y) throws TicTacToeServiceException {
         checkElement(element);
         checkLocationIsValid(x, y);
         // add element in board
-        board[x][y] = element.getValue();
+        gameState.getBoard()[x][y] = element.getValue();
         // assign lastPlayedElement
-        lastElementPlayed = element;
-        moveCount++;
+        gameState.setLastElementPlayed(element);
+        gameState.addMoveToCount();
     }
 
     public GameState getGameState() throws TicTacToeServiceException {
-        return new GameState();
+        return gameState;
     }
 
     private boolean checkWinningMove(TicTacToeElement element,int x,int y) {
@@ -54,7 +47,7 @@ public class TicTacToeService {
         int logicalSize = boardProperties.getBoardLength()-1;
         // Check column (only the one we just played)
         for(int i=0;i<=logicalSize;i++){
-            if(board[x][i] != element.getValue()){
+            if( gameState.getBoard()[x][i] != element.getValue()){
                 break;
             }
             // Be sure to be at the last index
@@ -65,7 +58,7 @@ public class TicTacToeService {
         }
         // Check row (only the one we just played)
         for(int i=0;i<=logicalSize;i++){
-            if(board[i][y] != element.getValue()){
+            if( gameState.getBoard()[i][y] != element.getValue()){
                 break;
             }
             // Be sure to be at the last index
@@ -77,7 +70,7 @@ public class TicTacToeService {
         if (x == y){
             // normal diagonal
             for(int i= 0;i<=logicalSize;i++){
-                if(board[i][i] != element.getValue()){
+                if( gameState.getBoard()[i][i] != element.getValue()){
                     break;
                 }
                 //Be sure to be at the last index
@@ -89,7 +82,7 @@ public class TicTacToeService {
             for(int i= 0;i<=logicalSize;i++){
                 // x=1 y =3
                 // x=3 y=1
-                if(board[i][logicalSize-i] != element.getValue()){
+                if( gameState.getBoard()[i][logicalSize-i] != element.getValue()){
                     break;
                 }
                 //Be sure to be at the last index
@@ -98,7 +91,7 @@ public class TicTacToeService {
                 }
             }
             // check draw
-            if(moveCount == Math.pow(logicalSize,2)-1){
+            if(gameState.getMoveCount() == Math.pow(logicalSize,2)-1){
                 return true;
             }
         }
@@ -116,18 +109,18 @@ public class TicTacToeService {
             throw new TicTacToeServiceException("Given y Location is out of boundary", ErrorType.POSITION_DOES_NOT_EXIST_ERROR);
         }
 
-        if (board[x][y] != 0) {
+        if (gameState.getBoard()[x][y] != 0) {
             logger.error("Location [x:{},y:{}] is out of boundary", x, y);
             throw new TicTacToeServiceException("Given location already exist", ErrorType.POSITION_ALREADY_EXIST_ERROR);
         }
     }
 
     private void checkElement(TicTacToeElement element) throws TicTacToeServiceException {
-        if (lastElementPlayed == null && element != TicTacToeElement.X) {
+        if (gameState.getLastElementPlayed() == null && element != TicTacToeElement.X) {
             logger.error("X must be the first element to be played - received: [{}]", element);
             throw new TicTacToeServiceException("X must be the first to play", ErrorType.X_FIRST_ERROR);
-        } else if (lastElementPlayed == element) {
-            logger.error("Not correct element received - previous: [{}] -received: [{}]", lastElementPlayed, element);
+        } else if (gameState.getLastElementPlayed() == element) {
+            logger.error("Not correct element received - previous: [{}] -received: [{}]", gameState.getLastElementPlayed(), element);
             if (element == TicTacToeElement.X) {
                 throw new TicTacToeServiceException("It's not your turn - it's O player to make the move!", ErrorType.X_TURN_ERROR);
             } else {
