@@ -9,10 +9,8 @@
 ## How to play
 
 #### Start a game
-POST on http://localhost:8080/tic-tac-toe/play with json-encoded param
-``{
-"size": 3
-}``
+POST on http://localhost:8080/tic-tac-toe/new with query param
+``http://localhost:8080/tic-tac-toe/new?size=3``
 
 You can skip this step and directly play (size will be set to 3)
 
