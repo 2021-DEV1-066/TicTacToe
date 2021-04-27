@@ -1,24 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.tictactoe.service.TicTacToeServiceTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 1.157 s <<< FAILURE! - in com.example.tictactoe.service.TicTacToeServiceTest
-addElementTest_AddXAndIsOTurn_ShouldThrowError  Time elapsed: 0.263 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: Expected com.example.tictactoe.exception.TicTacToeServiceException to be thrown, but nothing was thrown.
-	at com.example.tictactoe.service.TicTacToeServiceTest.addElementTest_AddXAndIsOTurn_ShouldThrowError(TicTacToeServiceTest.java:32)
-
-addElementTest_AddOnPositionAlreadyExist_ShouldThrowError  Time elapsed: 0.003 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <POSITION_ALREADY_EXIST_ERROR> but was: <X_FIRST_ERROR>
-	at com.example.tictactoe.service.TicTacToeServiceTest.addElementTest_AddOnPositionAlreadyExist_ShouldThrowError(TicTacToeServiceTest.java:45)
-
-addElementTest_AddOnPositionDoesNotExist_ShouldThrowError  Time elapsed: 0.002 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <POSITION_DOES_NOT_EXIST_ERROR> but was: <X_FIRST_ERROR>
-	at com.example.tictactoe.service.TicTacToeServiceTest.addElementTest_AddOnPositionDoesNotExist_ShouldThrowError(TicTacToeServiceTest.java:51)
-
-addElementTest_EmptyBoardAndAddX_ShouldBeSuccessful  Time elapsed: 0.002 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
-	at com.example.tictactoe.service.TicTacToeServiceTest.addElementTest_EmptyBoardAndAddX_ShouldBeSuccessful(TicTacToeServiceTest.java:21)
-
-addElementTest_AddOAndIsOTurn_ShouldThrowError  Time elapsed: 0.003 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <O_TURN_ERROR> but was: <X_FIRST_ERROR>
-	at com.example.tictactoe.service.TicTacToeServiceTest.addElementTest_AddOAndIsOTurn_ShouldThrowError(TicTacToeServiceTest.java:39)
-
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.634 s - in com.example.tictactoe.service.TicTacToeServiceTest

@@ -40,12 +40,10 @@ public class RestController {
     public ResponseEntity<String> playElementOnBoard(@Valid @RequestBody ElementInformation elementInformation) {
         // x and y already validated
         TicTacToeElement element = validationElement(elementInformation.getValue());
-
         if(ticTacToeService.getGameState().getLastElementPlayed() == null) {
             // Init game
             ticTacToeService.initBoard(boardProperties.getBoardLength());
         }
-
         // play
         try {
             ticTacToeService.addElement(element, elementInformation.getX(), elementInformation.getY());
@@ -53,6 +51,10 @@ public class RestController {
                 // Game finished re-init board
                 ticTacToeService.initBoard(boardProperties.getBoardLength());
                 return ResponseEntity.ok(String.format("Player [%s] has won the game by playing location [%d, %d] - Game has been re-launch: X turn to play !", element, elementInformation.getX(), elementInformation.getY()));
+            }else if(ticTacToeService.getGameState().isDraw()){
+                // Game finished re-init board
+                ticTacToeService.initBoard(boardProperties.getBoardLength());
+                return ResponseEntity.ok(String.format("The game is a draw - Game has been re-lunch: X turn to play !"));
             }
         } catch (TicTacToeServiceException e) {
             logger.error("Error while trying to play a move", e);
@@ -64,6 +66,9 @@ public class RestController {
 
     @GetMapping(value = "/tic-tac-toe")
     public ResponseEntity<String> viewGameState() {
+        if(ticTacToeService.getGameState() == null){
+            return ResponseEntity.ok("The game isn't started yet !");
+        }
         return ResponseEntity.ok(ticTacToeService.getGameState().toString());
     }
 

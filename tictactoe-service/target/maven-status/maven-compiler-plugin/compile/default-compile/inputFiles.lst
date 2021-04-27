@@ -1,5 +1,6 @@
-C:\Users\Kelso\Documents\temp\dev\tic-tac-toe\tictactoe-service\src\main\java\com\example\tictactoe\service\TicTacToeService.java
-C:\Users\Kelso\Documents\temp\dev\tic-tac-toe\tictactoe-service\src\main\java\com\example\tictactoe\exception\TicTacToeServiceException.java
-C:\Users\Kelso\Documents\temp\dev\tic-tac-toe\tictactoe-service\src\main\java\com\example\tictactoe\exception\ErrorType.java
-C:\Users\Kelso\Documents\temp\dev\tic-tac-toe\tictactoe-service\src\main\java\com\example\tictactoe\TicTacToeElement.java
-C:\Users\Kelso\Documents\temp\dev\tic-tac-toe\tictactoe-service\src\main\java\com\example\tictactoe\BoardProperties.java
+C:\temp\dev\TicTacToe\tictactoe-service\src\main\java\com\example\tictactoe\service\TicTacToeService.java
+C:\temp\dev\TicTacToe\tictactoe-service\src\main\java\com\example\tictactoe\BoardProperties.java
+C:\temp\dev\TicTacToe\tictactoe-service\src\main\java\com\example\tictactoe\GameState.java
+C:\temp\dev\TicTacToe\tictactoe-service\src\main\java\com\example\tictactoe\exception\TicTacToeServiceException.java
+C:\temp\dev\TicTacToe\tictactoe-service\src\main\java\com\example\tictactoe\exception\ErrorType.java
+C:\temp\dev\TicTacToe\tictactoe-service\src\main\java\com\example\tictactoe\TicTacToeElement.java

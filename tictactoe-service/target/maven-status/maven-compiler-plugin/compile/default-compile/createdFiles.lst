@@ -1,5 +1,6 @@
 com\example\tictactoe\exception\TicTacToeServiceException.class
 com\example\tictactoe\service\TicTacToeService.class
 com\example\tictactoe\TicTacToeElement.class
+com\example\tictactoe\GameState.class
 com\example\tictactoe\BoardProperties.class
 com\example\tictactoe\exception\ErrorType.class
