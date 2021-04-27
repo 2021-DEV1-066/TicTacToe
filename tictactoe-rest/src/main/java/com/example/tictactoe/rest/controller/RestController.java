@@ -69,7 +69,17 @@ public class RestController {
         if(ticTacToeService.getGameState() == null){
             return ResponseEntity.ok("The game isn't started yet !");
         }
-        return ResponseEntity.ok(ticTacToeService.getGameState().toString());
+        StringBuilder stringBuilder = new StringBuilder();
+        int[][] board = ticTacToeService.getGameState().getBoard();
+        for (int i=0; i<ticTacToeService.getGameState().getBoard().length;i++) {
+            stringBuilder.append("[");
+            for (int j=0; j<ticTacToeService.getGameState().getBoard().length;j++) {
+                TicTacToeElement elem = TicTacToeElement.fromValue(board[i][j]);
+                stringBuilder.append(elem == null ? "-" : elem).append("\t\t");
+            }
+            stringBuilder.append("]\n");
+        }
+        return ResponseEntity.ok(stringBuilder.toString());
     }
 
     // Validation method

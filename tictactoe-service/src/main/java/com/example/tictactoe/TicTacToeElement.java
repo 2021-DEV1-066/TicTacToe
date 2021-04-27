@@ -13,4 +13,13 @@ public enum TicTacToeElement {
     public int getValue() {
         return value;
     }
+
+    public static TicTacToeElement fromValue(int value) {
+        for (TicTacToeElement e : TicTacToeElement.values()) {
+            if (e.getValue() == value) {
+                return e;
+            }
+        }
+        return null;
+    }
 }

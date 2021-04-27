@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.tictactoe.service.TicTacToeServiceTest
 -------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.634 s - in com.example.tictactoe.service.TicTacToeServiceTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.188 s - in com.example.tictactoe.service.TicTacToeServiceTest

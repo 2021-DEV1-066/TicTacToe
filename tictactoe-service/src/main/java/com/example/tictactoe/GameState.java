@@ -64,6 +64,16 @@ public class GameState {
     public void setHasNextMove(boolean hasNextMove) {
         this.hasNextMove = hasNextMove;
     }
+
+    public String toString() {
+        String str = "";
+        for (var i = 0; i < this.board.length; i++) {
+            for (var j = 0; j < this.board.length; i++) {
+                str+=""+ this.board[i][j];
+            }
+        }
+        return str;
+    }
 }
 
 
