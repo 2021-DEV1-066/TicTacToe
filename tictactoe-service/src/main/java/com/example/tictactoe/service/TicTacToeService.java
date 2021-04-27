@@ -1,6 +1,7 @@
 package com.example.tictactoe.service;
 
 import com.example.tictactoe.BoardProperties;
+import com.example.tictactoe.GameState;
 import com.example.tictactoe.TicTacToeElement;
 import com.example.tictactoe.exception.ErrorType;
 import com.example.tictactoe.exception.TicTacToeServiceException;
@@ -34,7 +35,7 @@ public class TicTacToeService {
         moveCount = 0;
     }
 
-    public boolean addElement(TicTacToeElement element, int x, int y) throws TicTacToeServiceException {
+    public void addElement(TicTacToeElement element, int x, int y) throws TicTacToeServiceException {
         checkElement(element);
         checkLocationIsValid(x, y);
         // add element in board
@@ -42,8 +43,10 @@ public class TicTacToeService {
         // assign lastPlayedElement
         lastElementPlayed = element;
         moveCount++;
-        System.out.println(moveCount);
-        return checkWinningMove(element,x,y);
+    }
+
+    public GameState getGameState() throws TicTacToeServiceException {
+        return new GameState();
     }
 
     private boolean checkWinningMove(TicTacToeElement element,int x,int y) {
