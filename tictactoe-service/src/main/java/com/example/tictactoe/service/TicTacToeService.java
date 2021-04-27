@@ -7,15 +7,13 @@ import com.example.tictactoe.exception.ErrorType;
 import com.example.tictactoe.exception.TicTacToeServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 
 @Component
 public class TicTacToeService {
 
-    private static Logger logger = LoggerFactory.getLogger(TicTacToeService.class);
+    private static final Logger logger = LoggerFactory.getLogger(TicTacToeService.class);
     private BoardProperties boardProperties;
     private GameState gameState;
 
@@ -31,18 +29,17 @@ public class TicTacToeService {
     public void addElement(TicTacToeElement element, int x, int y) throws TicTacToeServiceException {
         checkElement(element);
         checkLocationIsValid(x, y);
-        // add element in board
         gameState.getBoard()[x][y] = element.getValue();
-        // assign lastPlayedElement
         gameState.setLastElementPlayed(element);
         gameState.addMoveToCount();
+        checkWinningMove(element,x,y);
     }
 
-    public GameState getGameState() throws TicTacToeServiceException {
+    public GameState getGameState() {
         return gameState;
     }
 
-    private boolean checkWinningMove(TicTacToeElement element,int x,int y) {
+    private void checkWinningMove(TicTacToeElement element,int x,int y) {
         // Winner can only be the last played element
         int logicalSize = boardProperties.getBoardLength()-1;
         // Check column (only the one we just played)
@@ -52,7 +49,7 @@ public class TicTacToeService {
             }
             // Be sure to be at the last index
             if(i == logicalSize){
-                return true;
+                gameState.setWinner(element);
             }
 
         }
@@ -63,39 +60,35 @@ public class TicTacToeService {
             }
             // Be sure to be at the last index
             if(i == logicalSize){
-                return true;
+                gameState.setWinner(element);
             }
         }
         // Check diagonal
-        if (x == y){
             // normal diagonal
             for(int i= 0;i<=logicalSize;i++){
                 if( gameState.getBoard()[i][i] != element.getValue()){
                     break;
                 }
-                //Be sure to be at the last index
+                // Be sure to be at the last index
                 if(i == logicalSize){
-                    return true;
+                    gameState.setWinner(element);
                 }
             }
             // anti diagonal
             for(int i= 0;i<=logicalSize;i++){
-                // x=1 y =3
-                // x=3 y=1
                 if( gameState.getBoard()[i][logicalSize-i] != element.getValue()){
                     break;
                 }
                 //Be sure to be at the last index
                 if(i == logicalSize){
-                    return true;
+                    gameState.setWinner(element);
                 }
             }
             // check draw
             if(gameState.getMoveCount() == Math.pow(logicalSize,2)-1){
-                return true;
+                gameState.setDraw(true);
             }
-        }
-        return false;
+
     }
 
     // Throw exception

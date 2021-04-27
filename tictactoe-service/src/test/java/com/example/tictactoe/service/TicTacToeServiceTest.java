@@ -32,47 +32,50 @@ public class TicTacToeServiceTest {
     }
 
     @Test
-    public void addElementTest_XWinnerByColumn_ShouldBeSuccessful() throws TicTacToeServiceException{
+    public void addElementTest_XWinnerByRow_ShouldBeSuccessful() throws TicTacToeServiceException {
         ticTacToeService.addElement(TicTacToeElement.X, 0, 0);
         ticTacToeService.addElement(TicTacToeElement.O, 1, 1);
         ticTacToeService.addElement(TicTacToeElement.X, 2, 0);
         ticTacToeService.addElement(TicTacToeElement.O, 1, 2);
         ticTacToeService.addElement(TicTacToeElement.X, 1, 0);
-        Assertions.assertEquals(ticTacToeService.getGameState().getWinner(), TicTacToeElement.X);
+        Assertions.assertEquals(TicTacToeElement.X, ticTacToeService.getGameState().getWinner());
     }
 
     @Test
-    public void addElementTest_XWinnerByRow_ShouldBeSuccessful() throws TicTacToeServiceException{
+    public void addElementTest_XWinnerByColumn_ShouldBeSuccessful() throws TicTacToeServiceException {
         ticTacToeService.addElement(TicTacToeElement.X, 0, 0);
         ticTacToeService.addElement(TicTacToeElement.O, 1, 1);
         ticTacToeService.addElement(TicTacToeElement.X, 0, 2);
         ticTacToeService.addElement(TicTacToeElement.O, 1, 2);
         ticTacToeService.addElement(TicTacToeElement.X, 0, 1);
-        Assertions.assertEquals(ticTacToeService.getGameState().getWinner(), TicTacToeElement.X);
+        Assertions.assertEquals(TicTacToeElement.X, ticTacToeService.getGameState().getWinner());
+
     }
 
     @Test
-    public void addElementTest_XWinnerByDiagonal_ShouldBeSuccessful() throws TicTacToeServiceException{
+    public void addElementTest_XWinnerByDiagonal_ShouldBeSuccessful() throws TicTacToeServiceException {
         ticTacToeService.addElement(TicTacToeElement.X, 1, 1);
         ticTacToeService.addElement(TicTacToeElement.O, 2, 2);
         ticTacToeService.addElement(TicTacToeElement.X, 2, 0);
         ticTacToeService.addElement(TicTacToeElement.O, 1, 2);
         ticTacToeService.addElement(TicTacToeElement.X, 0, 2);
-        Assertions.assertEquals(ticTacToeService.getGameState().getWinner(), TicTacToeElement.X);
+        Assertions.assertEquals(TicTacToeElement.X, ticTacToeService.getGameState().getWinner());
+
     }
 
     @Test
-    public void addElementTest_XWinnerByAntiDiagonal_ShouldBeSuccessful() throws TicTacToeServiceException{
+    public void addElementTest_XWinnerByAntiDiagonal_ShouldBeSuccessful() throws TicTacToeServiceException {
         ticTacToeService.addElement(TicTacToeElement.X, 0, 0);
         ticTacToeService.addElement(TicTacToeElement.O, 1, 0);
         ticTacToeService.addElement(TicTacToeElement.X, 1, 1);
         ticTacToeService.addElement(TicTacToeElement.O, 1, 2);
         ticTacToeService.addElement(TicTacToeElement.X, 2, 2);
-        Assertions.assertEquals(ticTacToeService.getGameState().getWinner(), TicTacToeElement.X);
+        Assertions.assertEquals(TicTacToeElement.X, ticTacToeService.getGameState().getWinner());
+
     }
 
     @Test
-    public void addElementTest_ShouldBeDraw() throws TicTacToeServiceException{
+    public void addElementTest_ShouldBeDraw() throws TicTacToeServiceException {
         ticTacToeService.addElement(TicTacToeElement.X, 0, 0);
         ticTacToeService.addElement(TicTacToeElement.O, 1, 0);
         ticTacToeService.addElement(TicTacToeElement.X, 1, 1);
@@ -92,7 +95,7 @@ public class TicTacToeServiceTest {
     }
 
     @Test
-    public void addElementTest_AddXAndIsOTurn_ShouldThrowError() throws TicTacToeServiceException{
+    public void addElementTest_AddXAndIsOTurn_ShouldThrowError() throws TicTacToeServiceException {
         // First play X
         ticTacToeService.addElement(TicTacToeElement.X, 0, 0);
 
