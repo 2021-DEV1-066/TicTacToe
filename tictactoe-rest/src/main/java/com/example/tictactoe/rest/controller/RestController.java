@@ -40,6 +40,9 @@ public class RestController {
     public ResponseEntity<String> playElementOnBoard(@Valid @RequestBody ElementInformation elementInformation) {
         // x and y already validated
         TicTacToeElement element = validationElement(elementInformation.getValue());
+        if(element == null){
+            ResponseEntity.badRequest().body("The element parameter must be X or O");
+        }
         if(ticTacToeService.getGameState().getLastElementPlayed() == null) {
             // Init game
             ticTacToeService.initBoard(boardProperties.getBoardLength());
@@ -84,10 +87,6 @@ public class RestController {
 
     // Validation method
     private TicTacToeElement validationElement(String element) {
-        TicTacToeElement elem = TicTacToeElement.valueOf(element);
-        if (elem == null) {
-            // Exception
-        }
-        return elem;
+        return TicTacToeElement.valueOf(element);
     }
 }
